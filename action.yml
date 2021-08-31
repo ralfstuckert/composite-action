@@ -57,8 +57,11 @@ runs:
 #        path: build/test-results/test/*.xml # Path to test results (inside artifact .zip)
 #        reporter: java-junit                # Format of test results
         
-#    - name: Publish Unit Test Results
-#      uses: EnricoMi/publish-unit-test-result-action@v1.19
-#      if: always()
-#      with:
-#        files: build/test-results/test/*.xml
+    - run: ls -al build/test-results/test
+      shell: bash
+      
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1.19
+      if: always()
+      with:
+        files: build/test-results/test/*.xml
