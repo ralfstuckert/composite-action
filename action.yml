@@ -45,6 +45,7 @@ runs:
       run: "echo ::set-output name=version::$( ./gradlew properties | sed -n -e 's/^version: \\(.*\\)$/\\1/p' )"
       
     - run: echo howdy > extra-file.txt
+      shell: bash
     - uses: actions/upload-artifact@v2
       with:
         path: extra-file.txt
