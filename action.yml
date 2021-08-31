@@ -50,8 +50,15 @@ runs:
       with:
         path: extra-file.txt
       
-    - name: Publish Unit Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v1.19
- #     if: always()
+    - uses: dorny/test-reporter@v1
       with:
-        files: build/test-results/test/*.xml
+        artifact: test-results              # artifact name
+        name: JUnit Tests                   # Name of the check run which will be created
+        path: build/test-results/test/*.xml # Path to test results (inside artifact .zip)
+        reporter: java-junit                # Format of test results
+        
+#    - name: Publish Unit Test Results
+#      uses: EnricoMi/publish-unit-test-result-action@v1.19
+#      if: always()
+#      with:
+#        files: build/test-results/test/*.xml
