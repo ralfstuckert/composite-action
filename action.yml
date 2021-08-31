@@ -28,10 +28,7 @@ runs:
       shell: bash
       run: chmod +x gradlew
 
-    - name: Build with Gradle
-      shell: bash
-      run: ./gradlew --info -Pversion=2.0 cleanTest build
-      
+
     - name: extract version
       id: extract-version
       shell: bash
