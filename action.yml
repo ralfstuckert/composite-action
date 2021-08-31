@@ -59,8 +59,8 @@ runs:
     - run: ls -al build/test-results/test
       shell: bash
       
-    - name: Publish Unit Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v1.19
-#      if: always()
-      with:
-        files: build/test-results/test/*.xml
+#    - name: Publish Unit Test Results
+#      uses: EnricoMi/publish-unit-test-result-action@v1.19
+##      if: always()
+#      with:
+#        files: build/test-results/test/*.xml
