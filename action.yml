@@ -5,7 +5,11 @@ inputs:
   blubber:
     description: “just sample”
     required: false
-
+outputs:
+  jar-version:
+    description: "Jar version"
+    value: ${{ steps.extract-version.outputs.version }}
+    
 runs:
   using: "composite"
   steps:
@@ -39,6 +43,11 @@ runs:
       id: extract-version
       shell: bash
       run: "echo ::set-output name=version::$( ./gradlew properties | sed -n -e 's/^version: \\(.*\\)$/\\1/p' )"
+      
+    - run: echo howdy > extra-file.txt
+    - uses: actions/upload-artifact@v2
+      with:
+        path: extra-file.txt
       
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1.19
