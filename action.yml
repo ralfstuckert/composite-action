@@ -45,6 +45,7 @@ runs:
      run: "echo ::set-output name=version::$( ./gradlew properties | sed -n -e 's/^version: \\(.*\\)$/\\1/p' )"
 
    - run: ls -al build/test-results/test
+     shell: bash
     
    - name: Publish Unit Test Results
      uses: EnricoMi/publish-unit-test-result-action@v1.19
